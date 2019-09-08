@@ -414,6 +414,10 @@ trait ZSink[-R, +E, +A0, -A, +B] { self =>
   final def filterNotM[E1 >: E, A1 <: A](f: A1 => IO[E1, Boolean]): ZSink[R, E1, A0, A1, B] =
     filterM(a => f(a).map(!_))
 
+  /**
+   * Run an instance of the sink for every unique key in the stream. Steps will emit the
+   * the key alongside the values and extract will return a mapping from key to result.
+   */
   final def keyed[A1 <: A, K](f: A1 => K): ZSink[R, E, (K, A0), A1, Map[K, B]] =
     new ZSink[R, E, (K, A0), A1, Map[K, B]] {
       type State = Map[K, self.State]
