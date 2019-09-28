@@ -27,7 +27,7 @@ class FiberRefSpec extends BaseCrossPlatformSpec {
     """
 
   val (initial, update, update1, update2) = ("initial", "update", "update1", "update2")
-  val looseTimeAndCpu                     = ZIO.yieldNow.repeat(Schedule.spaced(Duration.fromNanos(1)) && Schedule.recurs(100))
+  val looseTimeAndCpu                     = ZIO.yieldNow.repeat(ZSchedule.spaced(Duration.fromNanos(1)) && Schedule.recurs(100))
 
   def e1 =
     for {
