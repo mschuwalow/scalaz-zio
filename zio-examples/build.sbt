@@ -17,4 +17,13 @@ lazy val scalaJs = RootProject(file("scala-js"))
 lazy val root = project
   .in(file("."))
   .settings(publish / skip := true)
-  .aggregate(threadlocalBridge, reloadableServices, schedule, differCompositionalUpdates, scalaNative, migrateCatsEffect, migrateFromMonix, scalaJs)
+  .aggregate(
+    threadlocalBridge,
+    reloadableServices,
+    schedule,
+    differCompositionalUpdates,
+    scalaNative,
+    migrateCatsEffect,
+    migrateFromMonix,
+    scalaJs
+  )

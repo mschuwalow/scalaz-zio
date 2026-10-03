@@ -4,11 +4,10 @@ import cats.effect.ExitCode
 import monix.eval.{Task, TaskApp}
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Managing Resource Lifecycles
+ * Guide: Migrate from Monix to ZIO Section: Managing Resource Lifecycles
  *
- * Monix bracket: resource.bracket(use)(release)
- * ZIO  bracket:  resource.bracket(release)(use)
+ * Monix bracket: resource.bracket(use)(release) ZIO bracket:
+ * resource.bracket(release)(use)
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step4Resources"
  */

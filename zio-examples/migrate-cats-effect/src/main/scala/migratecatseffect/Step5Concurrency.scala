@@ -3,16 +3,12 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Forking Fibers and Running Effects in Parallel
+ * Guide: Migrate from Cats Effect to ZIO Section: Forking Fibers and Running
+ * Effects in Parallel
  *
- * Replaces:
- *   io.start              -> zio.fork
- *   fiber.cancel          -> fiber.interrupt
- *   IO.race(a, b)         -> a.race(b)
- *   (a, b).parMapN(f)     -> a.zipWithPar(b)(f)
- *   List.parTraverse(f)   -> ZIO.foreachPar(list)(f)
- *   List.parSequence      -> ZIO.collectAllPar(list)
+ * Replaces: io.start -> zio.fork fiber.cancel -> fiber.interrupt IO.race(a, b)
+ * -> a.race(b) (a, b).parMapN(f) -> a.zipWithPar(b)(f) List.parTraverse(f) ->
+ * ZIO.foreachPar(list)(f) List.parSequence -> ZIO.collectAllPar(list)
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.Step5Concurrency"
  */

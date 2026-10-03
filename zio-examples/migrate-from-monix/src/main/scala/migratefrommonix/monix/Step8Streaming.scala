@@ -5,8 +5,7 @@ import monix.eval.{Task, TaskApp}
 import monix.reactive.Observable
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Streaming — Observable to ZStream
+ * Guide: Migrate from Monix to ZIO Section: Streaming — Observable to ZStream
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step8Streaming"
  */

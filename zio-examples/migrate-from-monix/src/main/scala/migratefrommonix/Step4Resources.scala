@@ -3,8 +3,7 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Managing Resource Lifecycles
+ * Guide: Migrate from Monix to ZIO Section: Managing Resource Lifecycles
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step4Resources"
  */

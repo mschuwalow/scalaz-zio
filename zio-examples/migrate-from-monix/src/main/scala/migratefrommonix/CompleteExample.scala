@@ -4,8 +4,8 @@ import zio._
 import zio.stream._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Complete example combining all migration patterns:
+ * Guide: Migrate from Monix to ZIO Complete example combining all migration
+ * patterns:
  *   1. ZIOAppDefault entry point
  *   2. ZIO.attempt / ZIO.succeed effect constructors
  *   3. Typed error channel with mapError / catchAll
@@ -24,7 +24,7 @@ case class Connection(id: Int) {
   def close: UIO[Unit]                 = ZIO.succeed(println(s"[cleanup] Closing connection $id"))
 }
 
-sealed trait MigrateError extends Throwable { def msg: String }
+sealed trait MigrateError            extends Throwable { def msg: String }
 case class DbError(msg: String)      extends MigrateError
 case class TimeoutError(msg: String) extends MigrateError
 
@@ -44,13 +44,13 @@ object CompleteExample extends ZIOAppDefault {
   ): Task[Unit] =
     ZIO.scoped {
       for {
-        conn   <- makeConnection(id)
+        conn <- makeConnection(id)
         result <- conn
                     .query("SELECT 1")
                     .mapError(e => DbError(e.getMessage))
-        n      <- counter.updateAndGet(_ + 1)
-        _      <- ZIO.succeed(println(s"[worker-$id] got: $result, total: $n"))
-        _      <- ZIO.when(n >= 2)(done.succeed(s"worker-$id finished last").unit)
+        n <- counter.updateAndGet(_ + 1)
+        _ <- ZIO.succeed(println(s"[worker-$id] got: $result, total: $n"))
+        _ <- ZIO.when(n >= 2)(done.succeed(s"worker-$id finished last").unit)
       } yield ()
     }
 
@@ -67,12 +67,12 @@ object CompleteExample extends ZIOAppDefault {
 
       // raceEither replaces Task.race — returns Either[A, B]
       result <- done.await.raceEither(ZIO.sleep(5.seconds).as("timeout"))
-      msg    <- result match {
-                  case Left(doneMsg) => ZIO.succeed(doneMsg)
-                  case Right(_) =>
-                    fiber1.interrupt *> fiber2.interrupt *>
-                      ZIO.fail(TimeoutError("workers timed out"))
-                }
+      msg <- result match {
+               case Left(doneMsg) => ZIO.succeed(doneMsg)
+               case Right(_) =>
+                 fiber1.interrupt *> fiber2.interrupt *>
+                   ZIO.fail(TimeoutError("workers timed out"))
+             }
 
       _ <- ZIO.succeed(println(s"[main] $msg"))
       _ <- fiber1.join
@@ -93,7 +93,7 @@ object CompleteExample extends ZIOAppDefault {
                   .map(_ * 3)
                   .take(4)
                   .runCollect
-      _      <- ZIO.succeed(println(s"[main] stream: ${stream.toList}"))
+      _ <- ZIO.succeed(println(s"[main] stream: ${stream.toList}"))
 
       // Hub — replace ConcurrentChannel
       _ <- ZIO.scoped {

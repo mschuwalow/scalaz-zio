@@ -4,12 +4,13 @@ import cats.effect.{IO, IOApp}
 import cats.syntax.all._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Forking Fibers and Running Effects in Parallel
+ * Guide: Migrate from Cats Effect to ZIO Section: Forking Fibers and Running
+ * Effects in Parallel
  *
  * The "before" side of migratecatseffect.Step5Concurrency.
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.Step5Concurrency"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.catseffect.Step5Concurrency"
  */
 object Step5Concurrency extends IOApp.Simple {
 

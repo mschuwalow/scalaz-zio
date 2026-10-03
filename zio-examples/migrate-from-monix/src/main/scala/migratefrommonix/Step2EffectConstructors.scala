@@ -3,8 +3,8 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Translating Effect Constructors + Coeval
+ * Guide: Migrate from Monix to ZIO Section: Translating Effect Constructors +
+ * Coeval
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step2EffectConstructors"
  */

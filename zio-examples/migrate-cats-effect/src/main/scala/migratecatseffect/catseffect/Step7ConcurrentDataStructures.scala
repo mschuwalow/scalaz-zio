@@ -4,13 +4,14 @@ import cats.effect.{IO, IOApp}
 import cats.effect.std.{AtomicCell, CountDownLatch, Queue, Semaphore}
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Concurrent Data Structures from cats-effect's std Module
+ * Guide: Migrate from Cats Effect to ZIO Section: Concurrent Data Structures
+ * from cats-effect's std Module
  *
- * The "before" side of migratecatseffect.Step7ConcurrentDataStructures.
- * Note cats-effect's CountDownLatch uses `release`, not `countDown`.
+ * The "before" side of migratecatseffect.Step7ConcurrentDataStructures. Note
+ * cats-effect's CountDownLatch uses `release`, not `countDown`.
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.Step7ConcurrentDataStructures"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.catseffect.Step7ConcurrentDataStructures"
  */
 object Step7ConcurrentDataStructures extends IOApp.Simple {
 

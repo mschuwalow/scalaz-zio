@@ -6,8 +6,7 @@ import scala.concurrent.duration._
 import scala.util.Success
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Testing — TestScheduler → TestClock
+ * Guide: Migrate from Monix to ZIO Section: Testing — TestScheduler → TestClock
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step10Testing"
  */

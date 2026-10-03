@@ -6,10 +6,10 @@ import monix.eval.{Task, TaskApp}
 import monix.execution.Scheduler
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Concurrent Data Structures
+ * Guide: Migrate from Monix to ZIO Section: Concurrent Data Structures
  *
- * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step7ConcurrentDataStructures"
+ * sbt "migrate-from-monix/runMain
+ * migratefrommonix.monix.Step7ConcurrentDataStructures"
  */
 object Step7ConcurrentDataStructures extends TaskApp {
   // ContextShift[Task] is required by monix-catnap's concurrent builders
@@ -24,10 +24,10 @@ object Step7ConcurrentDataStructures extends TaskApp {
       _  <- Task.eval(println(s"ConcurrentQueue(1) value: $n"))
 
       // ConcurrentQueue — multi-slot
-      q  <- ConcurrentQueue[Task].bounded[String](10)
-      _  <- q.offer("hello")
-      s  <- q.poll
-      _  <- Task.eval(println(s"Queue value: $s"))
+      q <- ConcurrentQueue[Task].bounded[String](10)
+      _ <- q.offer("hello")
+      s <- q.poll
+      _ <- Task.eval(println(s"Queue value: $s"))
 
       // Semaphore
       sem <- Semaphore[Task](2)

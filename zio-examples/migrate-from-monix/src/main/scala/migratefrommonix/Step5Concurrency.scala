@@ -3,8 +3,7 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Concurrency and Fibers
+ * Guide: Migrate from Monix to ZIO Section: Concurrency and Fibers
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step5Concurrency"
  */

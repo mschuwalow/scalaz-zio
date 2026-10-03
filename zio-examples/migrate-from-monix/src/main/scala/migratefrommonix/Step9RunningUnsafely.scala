@@ -3,8 +3,7 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Running Effects Unsafely
+ * Guide: Migrate from Monix to ZIO Section: Running Effects Unsafely
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step9RunningUnsafely"
  */

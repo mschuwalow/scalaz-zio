@@ -3,13 +3,14 @@ package migratecatseffect.catseffect
 import cats.effect.{Deferred, IO, IOApp, IOLocal, Ref}
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Shared State and Cross-Fiber Signaling
+ * Guide: Migrate from Cats Effect to ZIO Section: Shared State and Cross-Fiber
+ * Signaling
  *
  * The "before" side of migratecatseffect.Step6SharedState, including the
  * IOLocal -> FiberRef subsection.
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.Step6SharedState"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.catseffect.Step6SharedState"
  */
 object Step6SharedState extends IOApp.Simple {
 

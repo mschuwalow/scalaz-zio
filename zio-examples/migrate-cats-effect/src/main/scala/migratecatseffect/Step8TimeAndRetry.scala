@@ -3,13 +3,11 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Time, Timeouts, and Retries
+ * Guide: Migrate from Cats Effect to ZIO Section: Time, Timeouts, and Retries
  *
- * Replaces:
- *   IO.sleep(duration)                    -> ZIO.sleep(duration)
- *   Temporal[F].timeout(io, duration)     -> zio.timeout(duration)
- *   cats-retry retryingOnAllErrors(policy) -> zio.retry(schedule)
+ * Replaces: IO.sleep(duration) -> ZIO.sleep(duration) Temporal[F].timeout(io,
+ * duration) -> zio.timeout(duration) cats-retry retryingOnAllErrors(policy) ->
+ * zio.retry(schedule)
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.Step8TimeAndRetry"
  */

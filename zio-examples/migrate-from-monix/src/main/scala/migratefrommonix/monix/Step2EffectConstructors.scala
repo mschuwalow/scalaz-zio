@@ -6,10 +6,11 @@ import monix.eval.{Coeval, Task, TaskApp}
 import scala.concurrent.duration._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Translating Effect Constructors + Coeval
+ * Guide: Migrate from Monix to ZIO Section: Translating Effect Constructors +
+ * Coeval
  *
- * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step2EffectConstructors"
+ * sbt "migrate-from-monix/runMain
+ * migratefrommonix.monix.Step2EffectConstructors"
  */
 object Step2EffectConstructors extends TaskApp {
   def run(args: List[String]): Task[ExitCode] = {
