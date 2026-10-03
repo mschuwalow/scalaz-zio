@@ -3,10 +3,10 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Concurrent Data Structures
+ * Guide: Migrate from Monix to ZIO Section: Concurrent Data Structures
  *
- * sbt "migrate-from-monix/runMain migratefrommonix.Step7ConcurrentDataStructures"
+ * sbt "migrate-from-monix/runMain
+ * migratefrommonix.Step7ConcurrentDataStructures"
  */
 object Step7ConcurrentDataStructures extends ZIOAppDefault {
   def run: Task[Unit] = ZIO.scoped {
@@ -18,10 +18,10 @@ object Step7ConcurrentDataStructures extends ZIOAppDefault {
       _  <- ZIO.succeed(println(s"Queue(1) value: $n"))
 
       // Queue.bounded(n) — replace ConcurrentQueue
-      q  <- Queue.bounded[String](10)
-      _  <- q.offer("hello")
-      s  <- q.poll
-      _  <- ZIO.succeed(println(s"Queue value: $s"))
+      q <- Queue.bounded[String](10)
+      _ <- q.offer("hello")
+      s <- q.poll
+      _ <- ZIO.succeed(println(s"Queue value: $s"))
 
       // Semaphore — withPermit replaces acquire/release
       sem <- Semaphore.make(2)

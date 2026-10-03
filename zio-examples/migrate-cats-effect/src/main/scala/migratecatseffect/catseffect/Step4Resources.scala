@@ -3,12 +3,11 @@ package migratecatseffect.catseffect
 import cats.effect.{IO, IOApp, Resource}
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Managing Resource Lifecycles
+ * Guide: Migrate from Cats Effect to ZIO Section: Managing Resource Lifecycles
  *
- * The "before" side of migratecatseffect.Step4Resources — note the nested
- * .use calls, which the ZIO version flattens into one for-comprehension
- * inside a single ZIO.scoped block.
+ * The "before" side of migratecatseffect.Step4Resources — note the nested .use
+ * calls, which the ZIO version flattens into one for-comprehension inside a
+ * single ZIO.scoped block.
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.Step4Resources"
  */

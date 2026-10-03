@@ -4,16 +4,15 @@ import zio._
 import zio.concurrent.CountdownLatch
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Concurrent Data Structures from cats-effect's std Module
+ * Guide: Migrate from Cats Effect to ZIO Section: Concurrent Data Structures
+ * from cats-effect's std Module
  *
- * Replaces:
- *   Queue[F, A]           -> zio.Queue[A]
- *   Semaphore[F]          -> zio.Semaphore
- *   CountDownLatch[F]     -> zio.concurrent.CountdownLatch
- *   AtomicCell[F, A]      -> Ref.Synchronized
+ * Replaces: Queue[F, A] -> zio.Queue[A] Semaphore[F] -> zio.Semaphore
+ * CountDownLatch[F] -> zio.concurrent.CountdownLatch AtomicCell[F, A] ->
+ * Ref.Synchronized
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.Step7ConcurrentDataStructures"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.Step7ConcurrentDataStructures"
  */
 object Step7ConcurrentDataStructures extends ZIOAppDefault {
 
@@ -31,10 +30,10 @@ object Step7ConcurrentDataStructures extends ZIOAppDefault {
       _   <- sem.withPermit(ZIO.succeed(println("Semaphore: exclusive access granted")))
 
       // Ref.Synchronized — replaces cats.effect.std.AtomicCell; effectful updates never interleave
-      cell   <- Ref.Synchronized.make(0)
-      _      <- cell.updateZIO(v => ZIO.succeed(v + 1))
-      cellV  <- cell.get
-      _      <- ZIO.succeed(println(s"AtomicCell replacement: $cellV"))
+      cell  <- Ref.Synchronized.make(0)
+      _     <- cell.updateZIO(v => ZIO.succeed(v + 1))
+      cellV <- cell.get
+      _     <- ZIO.succeed(println(s"AtomicCell replacement: $cellV"))
 
       // CountdownLatch — replaces cats.effect.std.CountDownLatch
       latch <- CountdownLatch.make(2)

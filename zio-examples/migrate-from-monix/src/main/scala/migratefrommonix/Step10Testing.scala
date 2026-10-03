@@ -5,8 +5,7 @@ import zio.test._
 import zio.test.Assertion._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Testing — TestScheduler → TestClock
+ * Guide: Migrate from Monix to ZIO Section: Testing — TestScheduler → TestClock
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step10Testing"
  */

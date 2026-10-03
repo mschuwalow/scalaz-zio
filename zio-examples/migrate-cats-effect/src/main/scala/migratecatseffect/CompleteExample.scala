@@ -3,8 +3,8 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Complete example combining all six migration steps:
+ * Guide: Migrate from Cats Effect to ZIO Complete example combining all six
+ * migration steps:
  *   1. ZIOAppDefault entry point
  *   2. ZIO.attempt / ZIO.succeed effect constructors
  *   3. Typed error channel with mapError / catchAll
@@ -21,7 +21,7 @@ case class CompleteDbConnection(id: Int) {
   def close: UIO[Unit]                 = ZIO.succeed(println(s"[cleanup] Closing connection $id"))
 }
 
-sealed trait CompleteAppError extends Throwable
+sealed trait CompleteAppError                extends Throwable
 case class CompleteDbError(msg: String)      extends CompleteAppError
 case class CompleteTimeoutError(msg: String) extends CompleteAppError
 
@@ -35,19 +35,19 @@ object CompleteExample extends ZIOAppDefault {
 
   // ── Worker: resource + typed errors + Ref + Promise ──────────────
   def worker(
-    id:      Int,
+    id: Int,
     counter: Ref[Int],
-    done:    Promise[Nothing, String]
+    done: Promise[Nothing, String]
   ): Task[Unit] =
     ZIO.scoped {
       for {
-        conn   <- makeDbConnection(id)
+        conn <- makeDbConnection(id)
         result <- conn
                     .query("SELECT 1")
                     .mapError(e => CompleteDbError(e.getMessage))
-        n      <- counter.updateAndGet(_ + 1)
-        _      <- ZIO.succeed(println(s"[worker-$id] got: $result, total: $n"))
-        _      <- ZIO.when(n >= 2)(done.succeed(s"worker-$id finished last").unit)
+        n <- counter.updateAndGet(_ + 1)
+        _ <- ZIO.succeed(println(s"[worker-$id] got: $result, total: $n"))
+        _ <- ZIO.when(n >= 2)(done.succeed(s"worker-$id finished last").unit)
       } yield ()
     }
 

@@ -3,15 +3,11 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Translating Effect Constructors
+ * Guide: Migrate from Cats Effect to ZIO Section: Translating Effect
+ * Constructors
  *
- * Replaces:
- *   IO(body)      -> ZIO.attempt(body)
- *   IO.pure(a)    -> ZIO.succeed(a)
- *   IO.unit       -> ZIO.unit
- *   IO.never      -> ZIO.never
- *   IO.raiseError -> ZIO.fail
+ * Replaces: IO(body) -> ZIO.attempt(body) IO.pure(a) -> ZIO.succeed(a) IO.unit
+ * -> ZIO.unit IO.never -> ZIO.never IO.raiseError -> ZIO.fail
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.Step2EffectTypes"
  */

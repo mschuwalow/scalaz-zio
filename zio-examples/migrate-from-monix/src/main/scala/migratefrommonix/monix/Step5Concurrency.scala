@@ -6,8 +6,7 @@ import monix.eval.{Task, TaskApp}
 import scala.concurrent.duration._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Concurrency and Fibers
+ * Guide: Migrate from Monix to ZIO Section: Concurrency and Fibers
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step5Concurrency"
  */

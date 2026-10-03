@@ -5,8 +5,8 @@ import monix.eval.{Task, TaskApp, TaskLocal}
 import monix.execution.atomic.Atomic
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Shared State (Atomic → Ref, TaskLocal → FiberRef)
+ * Guide: Migrate from Monix to ZIO Section: Shared State (Atomic → Ref,
+ * TaskLocal → FiberRef)
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step6SharedState"
  */

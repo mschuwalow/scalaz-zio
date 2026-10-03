@@ -3,13 +3,11 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Managing Resource Lifecycles
+ * Guide: Migrate from Cats Effect to ZIO Section: Managing Resource Lifecycles
  *
- * Replaces:
- *   Resource.make(acq)(rel)       -> ZIO.acquireRelease(acq)(rel)
- *   resource.use(f)               -> ZIO.scoped { acquired.flatMap(f) }
- *   Resource.fromAutoCloseable    -> ZIO.fromAutoCloseable
+ * Replaces: Resource.make(acq)(rel) -> ZIO.acquireRelease(acq)(rel)
+ * resource.use(f) -> ZIO.scoped { acquired.flatMap(f) }
+ * Resource.fromAutoCloseable -> ZIO.fromAutoCloseable
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.Step4Resources"
  */

@@ -3,15 +3,12 @@ package migratecatseffect
 import zio._
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Shared State and Cross-Fiber Signaling
+ * Guide: Migrate from Cats Effect to ZIO Section: Shared State and Cross-Fiber
+ * Signaling
  *
- * Replaces:
- *   Ref.of[IO](value)   -> Ref.make(value)
- *   Deferred[IO, A]     -> Promise[E, A]
- *   deferred.get        -> promise.await
- *   deferred.complete   -> promise.succeed
- *   (no equivalent)     -> promise.fail
+ * Replaces: Ref.of[IO](value) -> Ref.make(value) Deferred[IO, A] -> Promise[E,
+ * A] deferred.get -> promise.await deferred.complete -> promise.succeed (no
+ * equivalent) -> promise.fail
  *
  * sbt "migrate-cats-effect/runMain migratecatseffect.Step6SharedState"
  */

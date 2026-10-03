@@ -3,8 +3,8 @@ package migratefrommonix
 import zio._
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Shared State (Atomic → Ref, TaskLocal → FiberRef)
+ * Guide: Migrate from Monix to ZIO Section: Shared State (Atomic → Ref,
+ * TaskLocal → FiberRef)
  *
  * sbt "migrate-from-monix/runMain migratefrommonix.Step6SharedState"
  */
@@ -21,10 +21,10 @@ object Step6SharedState extends ZIOAppDefault {
         // FiberRef — replace TaskLocal
         requestId <- FiberRef.make("unset")
         _         <- requestId.set("req-42")
-        child     <- requestId.get
-                       .flatMap(v => ZIO.succeed(println(s"FiberRef value: $v")))
-                       .fork
-        _         <- child.join
+        child <- requestId.get
+                   .flatMap(v => ZIO.succeed(println(s"FiberRef value: $v")))
+                   .fork
+        _ <- child.join
       } yield ()
     }
 }

@@ -4,13 +4,14 @@ import zio._
 import zio.test._
 import zio.test.TestAspect._
 
-/** Step 4 — Run Tests on Native
-  *
-  * Demonstrates TestAspect.exceptNative to exclude the large-concurrency test
-  * on Scala Native, keeping native test runs under the 120-second budget.
-  *
-  * Run with: sbt test
-  */
+/**
+ * Step 4 — Run Tests on Native
+ *
+ * Demonstrates TestAspect.exceptNative to exclude the large-concurrency test on
+ * Scala Native, keeping native test runs under the 120-second budget.
+ *
+ * Run with: sbt test
+ */
 
 // Job is defined in Main.scala (same package); no redefinition needed here.
 

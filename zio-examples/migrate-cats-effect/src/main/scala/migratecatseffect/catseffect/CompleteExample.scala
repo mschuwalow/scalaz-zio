@@ -10,19 +10,20 @@ import scala.concurrent.duration._
  * Guide: Migrate from Cats Effect to ZIO
  *
  * The "before" side of migratecatseffect.CompleteExample — the motivating
- * cats-effect program from the guide's "The Problem" section, combining
- * IOApp, Resource, typed-ish errors, Ref, Deferred, and fiber concurrency.
+ * cats-effect program from the guide's "The Problem" section, combining IOApp,
+ * Resource, typed-ish errors, Ref, Deferred, and fiber concurrency.
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.CompleteExample"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.catseffect.CompleteExample"
  */
 
 sealed abstract class AppError(msg: String) extends RuntimeException(msg)
-case class DbError(msg: String)      extends AppError(msg)
-case class TimeoutError(msg: String) extends AppError(msg)
+case class DbError(msg: String)             extends AppError(msg)
+case class TimeoutError(msg: String)        extends AppError(msg)
 
 case class DbConnection(id: Int) {
   def query(sql: String): IO[String] = IO(s"conn-$id: $sql result")
-  def close(): IO[Unit] = IO(println(s"[cleanup] Closing connection $id"))
+  def close(): IO[Unit]              = IO(println(s"[cleanup] Closing connection $id"))
 }
 
 object CompleteExample extends IOApp.Simple {
@@ -35,11 +36,12 @@ object CompleteExample extends IOApp.Simple {
   def worker(id: Int, counter: Ref[IO, Int], done: Deferred[IO, String]): IO[Unit] =
     makeDbConnection(id).use { conn =>
       for {
-        result <- conn.query("SELECT 1")
+        result <- conn
+                    .query("SELECT 1")
                     .handleErrorWith(e => IO.raiseError(DbError(e.getMessage)))
-        n      <- counter.updateAndGet(_ + 1)
-        _      <- IO(println(s"[worker-$id] got: $result, total: $n"))
-        _      <- if (n >= 2) done.complete(s"worker-$id finished last").void else IO.unit
+        n <- counter.updateAndGet(_ + 1)
+        _ <- IO(println(s"[worker-$id] got: $result, total: $n"))
+        _ <- if (n >= 2) done.complete(s"worker-$id finished last").void else IO.unit
       } yield ()
     }
 
@@ -50,11 +52,11 @@ object CompleteExample extends IOApp.Simple {
       fiber1  <- worker(1, counter, done).start
       fiber2  <- worker(2, counter, done).start
       result  <- IO.race(done.get, IO.sleep(5.seconds).as("timeout"))
-      msg     <- result match {
-                   case Left(doneMsg)  => IO.pure(doneMsg)
-                   case Right(timeout) =>
-                     fiber1.cancel *> fiber2.cancel *> IO.raiseError(TimeoutError(timeout))
-                 }
+      msg <- result match {
+               case Left(doneMsg) => IO.pure(doneMsg)
+               case Right(timeout) =>
+                 fiber1.cancel *> fiber2.cancel *> IO.raiseError(TimeoutError(timeout))
+             }
       _       <- IO(println(s"[race] Final: $msg"))
       _       <- fiber1.join
       _       <- fiber2.join

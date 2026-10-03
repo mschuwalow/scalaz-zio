@@ -3,16 +3,17 @@ package scalanative
 import zio._
 import zio.stream._
 
-/** Putting It Together — Complete ZIO + Scala Native Example
-  *
-  * Combines every guide step: the Job type (shared with Main.scala), the
-  * Recorder ZLayer service, a ZStream processing pipeline, and a ZIO.foreach
-  * result-collection loop.
-  *
-  * Job and Recorder are defined in Main.scala (same package) and reused here.
-  *
-  * Run with: sbt "runMain scalanative.CompleteExample"
-  */
+/**
+ * Putting It Together — Complete ZIO + Scala Native Example
+ *
+ * Combines every guide step: the Job type (shared with Main.scala), the
+ * Recorder ZLayer service, a ZStream processing pipeline, and a ZIO.foreach
+ * result-collection loop.
+ *
+ * Job and Recorder are defined in Main.scala (same package) and reused here.
+ *
+ * Run with: sbt "runMain scalanative.CompleteExample"
+ */
 object CompleteExample extends ZIOAppDefault {
 
   val jobs: List[Job] = List(
@@ -39,9 +40,7 @@ object CompleteExample extends ZIOAppDefault {
       .fromIterable(jobs)
       .mapZIO(processJob)
       .runDrain *>
-      ZIO.serviceWithZIO[Recorder](_.total).flatMap(n =>
-        Console.printLine(s"Completed $n jobs").orDie
-      )
+      ZIO.serviceWithZIO[Recorder](_.total).flatMap(n => Console.printLine(s"Completed $n jobs").orDie)
 
   def run: ZIO[Any, Any, Any] =
     for {

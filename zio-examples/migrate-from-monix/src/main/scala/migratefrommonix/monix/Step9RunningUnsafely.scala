@@ -4,11 +4,10 @@ import monix.eval.Task
 import monix.execution.Scheduler.Implicits.global
 
 /**
- * Guide: Migrate from Monix to ZIO
- * Section: Running Effects Unsafely
+ * Guide: Migrate from Monix to ZIO Section: Running Effects Unsafely
  *
- * This is a plain App (not TaskApp) to show the unsafe API.
- * sbt "migrate-from-monix/runMain migratefrommonix.monix.Step9RunningUnsafely"
+ * This is a plain App (not TaskApp) to show the unsafe API. sbt
+ * "migrate-from-monix/runMain migratefrommonix.monix.Step9RunningUnsafely"
  */
 object Step9RunningUnsafely extends App {
   // runSyncUnsafe — synchronous extraction

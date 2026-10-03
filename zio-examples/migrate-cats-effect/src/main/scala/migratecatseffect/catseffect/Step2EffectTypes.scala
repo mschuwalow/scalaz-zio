@@ -3,12 +3,13 @@ package migratecatseffect.catseffect
 import cats.effect.{IO, IOApp}
 
 /**
- * Guide: Migrate from Cats Effect to ZIO
- * Section: Translating Effect Constructors
+ * Guide: Migrate from Cats Effect to ZIO Section: Translating Effect
+ * Constructors
  *
  * The "before" side of migratecatseffect.Step2EffectTypes.
  *
- * sbt "migrate-cats-effect/runMain migratecatseffect.catseffect.Step2EffectTypes"
+ * sbt "migrate-cats-effect/runMain
+ * migratecatseffect.catseffect.Step2EffectTypes"
  */
 object Step2EffectTypes extends IOApp.Simple {
 
